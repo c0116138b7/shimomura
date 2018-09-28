@@ -1,0 +1,24 @@
+
+<h2>User Info</h4>
+<% if @profile_image_id == nil %>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+<% elsif %>
+<%= attachment_image_tag @user, :profile_image %>
+<% end %>
+<br>
+name : <%= @user.name %>
+<br>
+introduction :<%= @user.introduction %>
+<br>
+<%= link_to '編集',  edit_user_path %>
+
+
+<h2>New Book</h2>
+<%= form_for @book do |f| %>
+
+<%= f.text_field :title %><br>
+<%= f.text_area :body %><br>
+
+<%= f.submit %>
+
+<% end %>

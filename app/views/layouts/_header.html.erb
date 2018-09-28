@@ -1,0 +1,30 @@
+
+<% if user_signed_in? %>
+	<header >
+		<nav>
+			<li class = "nav-logo" >
+				Bookers
+			</li>
+			<ul class = "nav-list">
+				<li class = "nav-list-item"><%= link_to 'home', user_path(current_user.id), class:"glyphicon glyphicon-home home" %></li>
+				<li class = "nav-list-item"><%= link_to 'users', users_path, class: "glyphicon glyphicon-user users"%></li>
+				<li class = "nav-list-item"><%= link_to 'Books', books_path , class: "glyphicon glyphicon-book books"%></li>
+				<li class = "nav-list-item"><%= link_to 'log out', destroy_user_session_path, method: :delete ,  class: "glyphicon glyphicon-log-out logaut"%></li>
+			</ul>
+		</nav>
+	</header>
+<% else %>
+	<header>
+		<nav >
+			<li class = "nav-logo" >
+				Bookers
+			</li>
+			<ul class = "nav-list">
+				<li class = "nav-list-item"><%= link_to 'home', root_path , class:"glyphicon glyphicon-home home" %></li>
+				<li class = "nav-list-item"><%= link_to 'about', home_about_path, class:"glyphicon glyphicon-link about"  %></li>
+				<li class = "nav-list-item"><%= link_to 'sign_up',  new_user_registration_path , class:"glyphicon glyphicon-edit signup" %></li>
+				<li class = "nav-list-item"><%= link_to 'login', new_user_session_path, class:"glyphicon glyphicon-log-in login"  %></li>
+			</ul>
+		</nav>
+	</header>
+<% end %>
