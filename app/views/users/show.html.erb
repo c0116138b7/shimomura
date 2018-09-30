@@ -1,17 +1,17 @@
-
-<%= render partial: "layouts/header" %>
-
-
 <div class = info >
 	<%= render partial: "info" %>
 </div>
+	<%= render partial: "books/new" %>
 
 
-<h2>Book Detail</h2>
+<h2>Books</h2>
+<table>
+	<tr><th></th><th>title</th><th>opinion</th></tr>
 <% @books.each do |book| %>
-
-<%= link_to book.title ,book_path(book.id) %>
-<%= book.body %>
-<%= link_to  'edit', edit_book_path %>
-<%= link_to  'delete', book_path(book.id), method: :delete %><br>
+<tr>
+	<td></td>
+<td><%= link_to book.title ,book_path(book.id) %></td>
+<td><%= book.body %></td>
+</tr>
 <% end %>
+</table>
