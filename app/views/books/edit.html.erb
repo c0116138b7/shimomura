@@ -1,6 +1,6 @@
 <h1>Editing Book</h1>
 
-<%= form_for @book, url: update_path do |f| %>
+<%= form_for @book do |f| %>
 <h4>title</h4>
 	<%= f.text_field :title %>
 <h4>Body</h4>
@@ -8,4 +8,4 @@
 	<%= f.submit %>
 <% end %>
 
-<%=  link_to 'show', show_path(@book.id) %> <%=  link_to 'Back',  new_path%>
+<%=  link_to 'show', book_path(@book.id) %> <%=  link_to 'Back',  books_path%>
