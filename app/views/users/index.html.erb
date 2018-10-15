@@ -1,6 +1,8 @@
 <div class = info >
-	<%= render partial: "users/info" %>
+	<%= render 'users/info', user: @user %>
 </div>
+<%= render 'books/new', book: @book %>
+
 <table>
 	<tr><th>image</th><th>name</th></tr>
 <% @users.each do |user| %>

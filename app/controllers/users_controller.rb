@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-
 before_action :authenticate_user!
+before_action :screen_user, only: [:edit, :update]
 
   def show
-  	@user = current_user
-    @users = User.find(params[:id])
-  	@books = @users.books
+  	@user = User.find(params[:id])
+  	@books = @user.books
   	@book = Book.new
   end
 
@@ -16,31 +15,27 @@ before_action :authenticate_user!
   end
 
   def edit
-  	@user = current_user
+  	@user = User.find(params[:id])
   end
 
-  def create
-  	user = User.new(user_params)
-  	user.save
-  	redirect_to user_path(current_user)
-  end
-
-  def update
-  	user = User.find(params[:id])
-  	user.update(user_params)
-  	redirect_to book_path
+   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+       redirect_to user_path(@user), alert: "編集に成功しました"
+    else
+      render 'edit'
+    end
   end
 
   private
-  def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image)
-  end
-
-
+    def user_params
+    	params.require(:user).permit(:name, :introduction, :profile_image)
+    end
 
   def screen_user
   	unless params[:id].to_i == current_user.id
   		redirect_to user_path(current_user)
   	end
   end
+
 end

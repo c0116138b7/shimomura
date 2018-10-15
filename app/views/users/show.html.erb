@@ -1,8 +1,8 @@
+<%= alert %>
 <div class = info >
-	<%= render partial: "info" %>
+	<%= render 'users/info', user: @user %>
 </div>
-	<%= render partial: "books/new" %>
-
+<%= render 'books/new', book: @book %>
 
 <h2>Books</h2>
 <table>
